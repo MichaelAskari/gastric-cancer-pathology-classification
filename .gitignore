@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# PyCharm
+.idea/
+
+# Local dataset
+all_image/
+
+# Local environment / auxiliary files
+pythorch/
+
+# Model files and checkpoints
+*.keras
+*.h5
+*.pth
+*.pt
+
+# Jupyter
+.ipynb_checkpoints/
