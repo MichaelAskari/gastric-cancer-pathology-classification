@@ -1,88 +1,222 @@
-# Swin Transformer for Pathology Image Classification
+````markdown
+# Gastric Cancer Pathology Image Classification with Swin Transformer
 
 ## Overview
 
-This project implements pathology image classification using the Swin Transformer architecture.
+This project implements gastric cancer pathology image classification using the Swin Transformer Tiny architecture.
 
-Two independent implementations are provided:
+Two independent deep learning implementations are provided:
 
 - TensorFlow / Keras
 - PyTorch
 
-The purpose of this project is to develop and evaluate a Swin Transformer-based deep learning model for pathology image classification and compare the results of implementations using different deep learning frameworks.
+The goal of this project is to develop and evaluate Swin Transformer-based models for multi-class pathology image classification and provide implementations using two major deep learning frameworks.
+
+---
+
+## Dataset
+
+The dataset consists of pathology images organized into eight classes:
+
+- ADI
+- DEB
+- LYM
+- MUC
+- MUS
+- NOR
+- STR
+- TUM
+
+The dataset is split into:
+
+- 70% Training
+- 15% Validation
+- 15% Test
+
+Stratified splitting is used to preserve class distributions across the datasets.
+
+> The dataset itself is not included in this repository.
+
+---
+
+## Model
+
+The main architecture used in this project is:
+
+**Swin Transformer Tiny**
+
+Input image resolution:
+
+```text
+224 × 224
+````
+
+Transfer learning is used for initialization, followed by fine-tuning of the model backbone.
+
+---
 
 ## Implementations
 
-### TensorFlow
+### TensorFlow / Keras
 
-The TensorFlow implementation is provided in:
+The TensorFlow implementation is available in:
 
-`train_tensorflow.py`
+```text
+train_tensorflow.py
+```
+
+The implementation includes:
+
+* Swin Transformer Tiny
+* Transfer learning
+* Fine-tuning
+* Data augmentation
+* Class weighting
+* Mixed precision training
+* Early stopping
+* Learning-rate scheduling
+* Test-Time Augmentation (TTA)
+* Confusion matrix analysis
+
+Run:
+
+```bash
+python train_tensorflow.py
+```
+
+---
 
 ### PyTorch
 
-The PyTorch implementation is provided in:
+The PyTorch implementation is available in:
 
-`train_pytorch.py`
+```text
+train_pytorch.py
+```
+
+The implementation includes:
+
+* Swin Transformer Tiny
+* Transfer learning
+* Fine-tuning
+* Data augmentation
+* Weighted sampling
+* Label smoothing
+* Mixed precision training
+* Early stopping
+* Balanced accuracy evaluation
+
+Run:
+
+```bash
+python train_pytorch.py
+```
+
+---
+
+## Evaluation Metrics
+
+Model performance is evaluated using:
+
+* Accuracy
+* Balanced Accuracy
+* Macro F1-score
+* Weighted F1-score
+* Classification Report
+* Confusion Matrix
+
+---
+
+## Results
+
+The repository includes training and evaluation visualizations:
+
+### Training Curves
+
+* `accuracy_curve.png`
+* `loss_curve.png`
+
+### Confusion Matrices
+
+* `confusion_matrix_test.png`
+* `confusion_matrix_test_counts.png`
+* `confusion_matrix_test_normalized.png`
+
+### Training History
+
+* `history_all.json`
+
+---
 
 ## Project Structure
 
 ```text
-train_tf_swin_pathology/
+gastric-cancer-pathology-classification/
 │
-├── train_tensorflow.py
-├── train_pytorch.py
 ├── README.md
 ├── .gitignore
 │
-├── results/
-│   ├── accuracy_curve.png
-│   ├── loss_curve.png
-│   ├── confusion_matrix.png
-│   ├── confusion_matrix_test.png
-│   ├── confusion_matrix_test_counts.png
-│   └── confusion_matrix_test_normalized.png
+├── train_tensorflow.py
+├── train_pytorch.py
 │
-└── history/
-    └── history_all.json
+├── history_all.json
+│
+├── accuracy_curve.png
+├── loss_curve.png
+│
+├── confusion_matrix_test.png
+├── confusion_matrix_test_counts.png
+└── confusion_matrix_test_normalized.png
+```
 
-Results
+---
 
-The repository contains training and evaluation visualizations, including:
+## Requirements
 
-Training and validation accuracy curves
-Training and validation loss curves
-Confusion matrices
-Normalized confusion matrix
-Test-set evaluation results
-Requirements
+Python 3.x is required.
 
-The project requires Python and the corresponding deep learning libraries.
+### TensorFlow
 
-TensorFlow
+```bash
 pip install tensorflow
-PyTorch
+```
+
+### PyTorch
 
 Install PyTorch according to your operating system and CUDA configuration.
 
-Additional dependencies may include:
+### Additional Dependencies
 
+```bash
 pip install numpy pandas matplotlib scikit-learn pillow
-Usage
-TensorFlow
-python train_tensorflow.py
-PyTorch
-python train_pytorch.py
-Evaluation
+```
 
-The project generates visualization files for evaluating model performance.
+For the TensorFlow implementation, the Swin Transformer package used by the project must also be installed.
 
-These include accuracy, loss, and confusion matrix plots.
+---
 
-Reproducibility
+## Reproducibility
 
-For reproducible experiments, it is recommended to use the same dataset split, preprocessing pipeline, image resolution, batch size, number of epochs, and random seed.
+The experiments use a fixed random seed:
 
-Author
+```text
+SEED = 42
+```
+
+For reproducible results, use the same:
+
+* Dataset
+* Dataset split
+* Random seed
+* Image resolution
+* Batch size
+* Data augmentation
+* Training configuration
+* Model architecture
+
+---
+
+## Author
 
 Michael Askari
+[2]: https://docs.github.com/en/enterprise-cloud%40latest/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes?utm_source=chatgpt.com "About the repository README file - GitHub Enterprise Cloud Docs"
